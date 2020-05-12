@@ -1,0 +1,18 @@
+{
+  "name": "arengine",
+  "version": "1.0.0",
+  "description": "a dynamic html-js linker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/index.js"
+  },
+  "author": "Elvis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "html": "^1.0.0",
+    "line-reader": "^0.4.0",
+    "nodemon": "^2.0.3"
+  }
+}
