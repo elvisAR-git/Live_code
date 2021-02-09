@@ -1,30 +1,37 @@
-const plugin = require('./plugin.js')
-const HTML = require('html')
-const MAIN_DIR = __dirname + "/app/"
+const plugin = require("./plugin.js");
+const HTML = require("html");
+const MAIN_DIR = __dirname + "/app/";
 
-class ARender
-{
-    static renderPage(apps)
-    {
-        var rawHtml
-        var outHtml
-        var MainPage = plugin.readHtml(MAIN_DIR + 'main.app').toString()
-        var data
+/*
+    The Arender class employs soft methods that allow for the
+    template generation.
 
-        apps.forEach(view =>
-        {
-            rawHtml = plugin.readHtml(view.path)
-            outHtml = plugin.render(rawHtml, view.data)
+    it returns a MAINPAGE that contains the complete HTML to be displayed
+    along with the data inserted with the engine.js class
 
-            data = MainPage.replace(`<${view.appname}></${view.appname}>`, outHtml)
-            MainPage = data
-        });
+    It is also interfaced with plugin.js
 
-        MainPage = HTML.prettyPrint(MainPage)
+*/
 
-        return MainPage
-    }
+class ARender {
+  static renderPage(apps) {
+    var rawHtml;
+    var outHtml;
+    var MainPage = plugin.readHtml(MAIN_DIR + "main.html").toString();
+    var data;
+
+    apps.forEach((view) => {
+      rawHtml = plugin.readHtml(view.path);
+      outHtml = plugin.render(rawHtml, view.data);
+
+      data = MainPage.replace(`<${view.appname}></${view.appname}>`, outHtml);
+      MainPage = data;
+    });
+
+    MainPage = HTML.prettyPrint(MainPage);
+
+    return MainPage;
+  }
 }
 
-
-exports.ARender = ARender
+exports.ARender = ARender;
