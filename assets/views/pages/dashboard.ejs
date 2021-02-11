@@ -23,7 +23,6 @@
 <script>
   hljs.initHighlightingOnLoad();
 </script>
-
 <body class="home">
   <div class="container-fluid display-table">
     <div class="row special display-table-row">
@@ -56,12 +55,20 @@
         </div>
       </div>
       <div class="col-md-10 col-sm-11 display-table-cell v-align">
-        <div class="user-dashboard">
+        <div class="user-dashboard p-0">
+          <%- include("../partials/header") %>
           <div class="row">
             <div class="col-md-8 p-3">
               <a href="" class="btn btn-outline-primary" id="runcode"
                 >Run code</a
               >
+              <a
+                href="https://github.com/elvisAR-git/ARengine"
+                class="btn btn-lg btn-outline-danger"
+                id="runcode"
+              >
+                <i class="fa fa-git"></i>
+              </a>
             </div>
             <div class="col-md-2 p-3">
               <div class="form-check form-switch">
@@ -79,7 +86,7 @@
           <!-- code goes here -->
           <br />
           <div class="codebar">
-            <pre><code class="p-3 shadow" id="code" style="height: 500px !important; font-family:monospace;font-size: large;">Select file to open</code></pre>
+            <pre><code class="p-3 shadow" id="code" style="height: auto;min-height: 500px !important; max-height: 650px; font-family:monospace;font-size: large;">Select file to open</code></pre>
           </div>
         </div>
       </div>
@@ -88,11 +95,15 @@
 </body>
 <script>
   var URL_FRAME = "";
+
+  var myTimer;
+
   $(document).ready(function () {
     $('[data-toggle="offcanvas"]').click(function () {
       $("#navigation").toggleClass("hidden-xs");
     });
   });
+
   function loadCode(element) {
     element.preventDefault;
     element.classList.add("active");
@@ -139,7 +150,6 @@
     };
     xhr.send();
   }
-  var myTimer;
 
   async function async_fectch() {
     var xhr = new XMLHttpRequest();
@@ -186,7 +196,14 @@
     if (element.checked) {
       myTimer = setInterval(async_fectch, 800);
     } else {
-      clearInterval(myTimer);
+      stopLiveReload();
+    }
+  }
+  function stopLiveReload() {
+    console.log("Stopped live reload!", myTimer);
+
+    for (let index = 1; index < myTimer + 3; index++) {
+      window.clearInterval(index);
     }
   }
 </script>

@@ -11,4 +11,4 @@
 
 #New in this version
 
-- Live reload feature (code will outo update about each half second)
+- Live reload feature (code will auto update about each half second)
