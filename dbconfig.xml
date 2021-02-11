@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbconfig>
+  <host>localhost</host>
+  <user>root</user>
+  <password></password>
+  <database>dsc_database</database>
+  <port>3306</port>
+</dbconfig>

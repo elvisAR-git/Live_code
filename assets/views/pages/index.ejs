@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    crossorigin="anonymous"
+  />
+  <body>
+    <%- include("../partials/header") %>
+    <div class="container">
+      <br />
+      <div class="row">
+        <% classes.forEach(function(class_) { %>
+        <div class="card col-md-4 shadow m-1 p-2 text-center">
+          <img
+            src="<%=class_.image  %> "
+            alt=""
+            class="card-img-top"
+            style="height: 150px"
+          />
+          <div class="card-body">
+            <h4 class="card-title"><%=class_.name%></h4>
+            <small> <%=class_.description%> </small><br />
+            <a href="/class/<%=class_.id%>" class="btn btn-outline-success"
+              >Launch Session</a
+            >
+          </div>
+        </div>
+        <%}); %>
+      </div>
+    </div>
+  </body>
+</html>

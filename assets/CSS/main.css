@@ -1,0 +1,619 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal&display=swap');
+
+nav li {
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.navbar {
+    transition: all cubic-bezier(0.165, 0.84, 0.44, 1) 1s;
+}
+
+nav {
+    padding: 1%;
+    box-sizing: border-box;
+    box-shadow: 2px 3px 9px gray;
+    z-index: 2;
+}
+
+nav h1 {
+    font-family: 'Tajawal';
+    font-stretch: condensed;
+    font-weight: 1;
+    text-rendering: optimizeSpeed;
+}
+
+.search-bar {
+    margin-top: 5%;
+}
+
+.btn {
+    margin: .4%;
+}
+
+.shadow-dark {
+    box-shadow: 2px 3px 9px gray;
+}
+
+.circle {
+    background-color: blue;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    border-radius: 50%;
+    opacity: .1;
+    top: 30%;
+    left: 50%;
+}
+
+.circle-1 {
+    background-color: rgba(0, 0, 255, 0.637);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 100px;
+    opacity: .2;
+    top: 30%;
+    left: 40%;
+}
+
+.sit-back {
+    z-index: -1;
+}
+
+
+#url {
+    background-color: transparent;
+    padding: 1.5%;
+    width: 50%;
+    border: 1px rgba(68, 66, 66, 0.705) solid;
+    border-radius: 20px;
+    font-family: 'Tajawal';
+    font-size: 110%;
+    transition: all .1s linear;
+}
+
+.text {
+    font-family: 'Tajawal' !important;
+    font-size: 2em !important;
+}
+
+.shorten-btn {
+    border: 1px rgba(128, 128, 128, 0.705) solid;
+    background-color: transparent;
+    padding: 1.5%;
+    border-radius: 15px;
+}
+
+body {
+    background-color: rgba(240, 248, 255, 0.555);
+}
+
+.body-fade {
+    background-color: rgba(122, 133, 143, 0.945);
+}
+
+.nav-item:hover {
+    background-color: rgba(220, 220, 220, 0.493);
+}
+
+.nav-item {
+    font-size: 90%;
+    /* border: 1px rgba(128, 128, 128, 0.705) solid; */
+    border-radius: 15px;
+    margin: 1px;
+}
+
+.serif {
+    font-family: serif;
+    font-size: small;
+}
+
+#url:focus {
+    border: 2px rgba(128, 128, 128, 0.445) solid;
+}
+
+
+.whitenav {
+    background-color: rgb(252, 255, 249) !important;
+    transition: all cubic-bezier(0.165, 0.84, 0.44, 1) .1s;
+}
+
+.circle-2 {
+    background-color: rgb(170, 0, 255);
+    width: 900px;
+    height: 900px;
+    border: 1px solid grey;
+    position: absolute;
+    border-radius: 450px;
+    opacity: .1;
+    top: 2%;
+    left: 23%;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cuprum|Josefin+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+nav {
+    padding: 2%;
+    font-family: "Tajawal";
+    margin: 0%;
+}
+
+.nav-content {
+    text-align: center;
+}
+
+.nav-content h2 {
+    font-size: 300%;
+}
+
+.nav-content p {
+    font-size: 180%;
+}
+
+.blog img {
+    height: 12em;
+    border-radius: 10px;
+    position: relative;
+}
+
+.blog {
+    padding: 1%;
+    margin: 0;
+    text-align: center !important;
+    position: relative;
+}
+
+.blog h3 {
+    font-family: 'Cuprum', sans-serif;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: justify center;
+    opacity: .8;
+    position: relative;
+    top: 5%;
+    transition: all .5s;
+}
+
+.blog:after {
+    content: "";
+    background-color: rgba(2, 56, 233, 0.342);
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    border-radius: 50%;
+    opacity: .3;
+    transform: scale(0);
+    top: 25%;
+    left: 25%;
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: -3;
+}
+
+.blog:hover:after {
+    transform: scale(3.5);
+}
+
+.blog:hover h3 {
+    top: 0%;
+    opacity: 1;
+    transform: scale(1.02);
+    text-shadow: -2px 5px 2px gray;
+}
+
+.blog:hover p {
+    color: blue;
+    opacity: 1;
+}
+
+.blog p {
+    font-family: 'Josefin Sans', sans-serif;
+    transition: 1s;
+    opacity: .5;
+}
+
+
+.blog {
+    width: 20%;
+    margin-right: 5%;
+}
+
+.blog:hover {
+    cursor: pointer;
+}
+
+.main {
+    text-align: center;
+}
+
+.main h2 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2.3rem;
+    margin: 3.5%;
+    font-weight: bolder;
+}
+
+
+.social img {
+    height: 30px;
+}
+
+.social {
+    padding: 9%;
+    padding-top: 0%;
+}
+
+
+.animate-smooth {
+    animation-name: smoothscroll;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    transition: all 1s;
+    position: relative;
+}
+
+@keyframes smoothscroll {
+    0% {
+        opacity: 1;
+        top: 50px;
+    }
+
+    100% {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+.emodal {
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.747);
+    position: absolute;
+    padding: 2%;
+    width: 40%;
+    top: 30%;
+    transition: all 1s;
+    left: 30%;
+}
+
+.noscroll {
+    position: fixed !important
+}
+
+.loader {
+    position: relative;
+    height: 40px;
+    width: 50%;
+    display: inline-flex;
+    background-color: rgba(0, 0, 255, 0.205);
+    border-radius: 9px;
+    border: 1px solid rgba(7, 7, 7, 0.096);
+    overflow: hidden;
+
+}
+
+.products {
+    text-align: center !important;
+}
+
+.loader::after {
+    content: "";
+    background-color: rgba(0, 102, 255, 0.459);
+    box-shadow: rgba(248, 248, 248, 0.925) .8em .3em 2em;
+    height: 100%;
+    width: 100%;
+    left: -50%;
+    position: absolute;
+    z-index: 0;
+    border-radius: 9px;
+    animation-name: load;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes load {
+    0% {
+        left: -100%;
+    }
+
+    50% {
+        left: -50%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+.mask {
+    position: fixed;
+    background-color: rgba(37, 41, 44, 0.685);
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0;
+    z-index: 9;
+}
+
+.hide {
+    display: none;
+}
+
+.faded-dark {
+    background-color: rgba(220, 220, 220, 0.842);
+}
+
+body::before {
+    content: "";
+    top: 0;
+    left: -60%;
+    bottom: 0;
+    position: absolute;
+    box-shadow: 1px 1px 20px rgba(0, 81, 255, 0.541);
+    width: 100%;
+    height: 210%;
+    background-color: rgba(20, 26, 187, 0.842);
+    opacity: .2;
+    z-index: -3;
+    border-radius: 50%;
+    transition: all 2s;
+    scroll-behavior: smooth;
+    animation-name: ghost;
+    animation-duration: 10s;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+}
+
+@keyframes ghost {
+    0% {
+        transform: translateX(30%);
+    }
+
+    100% {
+        transform: rotateZ(0%);
+    }
+}
+
+.social-drop {
+    /* display: none; */
+    opacity: 0;
+    position: absolute;
+    background-color: rgba(0, 86, 247, 0.26);
+    border-radius: 10%;
+    padding: 9%;
+    z-index: -9;
+    box-shadow: 3px 2px 9px rgb(214, 214, 214);
+    width: 10%;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 2%;
+    transform: scale(0);
+    margin-top: .2%;
+    transform-origin: top left;
+}
+
+#social:hover .social-drop {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 6;
+}
+
+.social-drop:hover {
+    display: block;
+}
+
+.social-drop a {
+    transform: scale(0)
+}
+
+.nav-item {
+    transition: all .3s;
+}
+
+.info {
+    width: 100%;
+    padding: 20px;
+    border-radius: .4rem;
+    margin: 19px;
+}
+
+.info h3 {
+    font-family: 'Tajawal';
+
+    font-weight: bold;
+    font-size: 190%;
+}
+
+.search-bar h3 {
+    font-family: 'Tajawal';
+
+    font-weight: bold;
+}
+
+#url:focus {
+    box-shadow: 1px 0px 1px 1px rgba(0, 110, 255, 0.582);
+}
+
+.info blockquote {
+    font-family: 'Tajawal';
+    font-size: 130%;
+}
+
+
+@media screen and (max-width:1000px) {
+
+    .row {
+        display: block;
+        width: auto;
+    }
+
+    .blog img {
+        height: 200px;
+        scale: .4;
+    }
+
+    .circle-2 {
+        display: none;
+    }
+
+    .blog {
+        width: 100%;
+        padding: 20px;
+        border-radius: .4rem;
+        margin: 19px;
+    }
+
+    nav {
+        width: max-content;
+    }
+
+    body {
+        width: auto;
+        text-align: center !important;
+    }
+
+    .info .services .products {
+        font-family: "Tajawal" !important;
+    }
+
+    .nav {
+        display: none !important;
+    }
+
+    .blog:after {
+        content: "";
+        background-color: rgba(2, 56, 233, 0.342);
+        height: 90px;
+        width: 90px;
+        position: absolute;
+        border-radius: 50%;
+        opacity: .3;
+        transform: scale(0);
+        top: 32%;
+        left: 35%;
+        transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: -3;
+    }
+
+    #menu {
+        display: inline-block !important;
+
+        cursor: pointer;
+        padding: 1px;
+        border-radius: 1px;
+    }
+
+    #menu:active {
+        box-shadow: 1px 3px .1rem rgba(220, 220, 220, 0.493);
+
+    }
+
+    .mobile-menu {
+
+        display: none !important;
+        position: absolute;
+        background-color: rgb(252, 255, 249);
+        width: 100%;
+        padding: 10px;
+        top: 65px;
+        animation-name: fade-in;
+        animation-duration: .3s;
+        animation-fill-mode: forwards;
+        transition: all .3s;
+        left: 0;
+        height: max-content;
+        box-shadow: -2em 2.2em 2em .01em gray;
+    }
+
+    .mobile-menu li {
+        padding: 4px;
+        display: block !important;
+        width: 100%;
+    }
+
+    body::before {
+        display: none;
+    }
+
+    .nav-item a:active:hover {
+        text-decoration: none !important;
+    }
+
+    .nav-item {
+        padding: 15px !important;
+    }
+
+    .social-drop {
+        /* display: none; */
+        opacity: 0;
+        position: absolute;
+        background-color: rgba(0, 86, 247, 0.767);
+        border-radius: 5%;
+        padding: 9%;
+        z-index: -9;
+        box-shadow: 3px 2px 9px rgb(214, 214, 214);
+        width: 100%;
+        height: 40%;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        padding: 2%;
+        transform: scale(0);
+        margin: 5px;
+        transform-origin: top left;
+    }
+
+    .social-drop a {
+        color: white;
+    }
+
+}
+
+
+
+
+@keyframes fade-in {
+
+    0% {
+        top: 50px;
+    }
+
+    100% {
+        top: 65px;
+    }
+
+}
+
+#menu {
+    width: 2em;
+    display: none;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+
+.mobile-menu {
+    display: none;
+
+
+}
