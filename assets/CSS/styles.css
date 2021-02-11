@@ -6,8 +6,14 @@ body {
     height: 100%;
 }
 
-.row {
-    height: 100%;
+.special {
+    height: 100% !important;
+}
+
+code {
+    background-color: rgb(250, 235, 216) !important;
+    border: 1px burlywood solid;
+    border-radius: 9px;
 }
 
 #navigation {
