@@ -7,6 +7,20 @@ const bodyparser = require("body-parser");
 
 var app = express();
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  if ("OPTIONS" == req.method) {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
+
 // content parsers
 app.use(
   bodyparser.urlencoded({
@@ -29,6 +43,6 @@ app.use("/", routes);
 
 var PORT = process.env.PORT || 3000;
 var addr = "192.168.43.70";
-app.listen(PORT, "localhost", () => {
-  console.log(`The server is running at port ${PORT}`);
+app.listen(PORT, addr, () => {
+  console.log(`The server is running at port http://${addr}:${PORT}`);
 });

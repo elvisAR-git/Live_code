@@ -12,13 +12,14 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
     crossorigin="anonymous"
   />
+  <link rel="stylesheet" href="/CSS/main.css" />
   <body>
     <%- include("../partials/header") %>
     <div class="container">
       <br />
       <div class="row">
         <% classes.forEach(function(class_) { %>
-        <div class="card col-md-4 shadow m-1 p-2 text-center">
+        <div class="card col-md-4 shadow p-2 text-center g-2">
           <img
             src="<%=class_.image  %> "
             alt=""

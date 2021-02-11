@@ -39,16 +39,14 @@
               ></i>
               <a href="/"> <span class="hidden-xs">Home</span></a>
             </li>
-            <li>
-              <span class="text-white">Files</span>
-              <hr class="bg-white" />
-            </li>
+            <li></li>
             <% files.forEach(function(file){%>
             <li class="active">
               <a href="#" onclick="loadCode(this)"
                 ><i class="<%=file.icon%>" aria-hidden="true"></i
                 ><span class="hidden-xs hidden-sm"><%=file.filename%></span></a
               >
+              <hr class="bg-white" />
             </li>
             <%});%>
           </ul>
@@ -59,9 +57,9 @@
           <%- include("../partials/header") %>
           <div class="row">
             <div class="col-md-8 p-3">
-              <a href="" class="btn btn-outline-primary" id="runcode"
-                >Run code</a
-              >
+              <a href="" class="btn btn-lg btn-outline-primary" id="runcode">
+                <i class="fa fa-play-circle"></i>
+              </a>
               <a
                 href="https://github.com/elvisAR-git/ARengine"
                 class="btn btn-lg btn-outline-danger"
@@ -96,6 +94,10 @@
 <script>
   var URL_FRAME = "";
 
+  var SERVER_API = `${document.URL}`;
+  const url = SERVER_API;
+  let domain = new URL(url);
+  SERVER_API = `http://${domain.hostname}:3000/`;
   var myTimer;
 
   $(document).ready(function () {
@@ -108,10 +110,9 @@
     element.preventDefault;
     element.classList.add("active");
     var xhr = new XMLHttpRequest();
-    xhr.open(
-      "GET",
-      `http://localhost:3000/class-data/<%=id%>/${element.textContent}`
-    );
+
+    xhr.open("GET", `${SERVER_API}class-data/<%=id%>/${element.textContent}`);
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
     URL_FRAME = `${element.textContent}`;
     xhr.onload = function () {
       if (this.status == 200) {
@@ -120,7 +121,7 @@
         document.getElementById("code").innerText = data;
         if (obj.filename.includes(".html")) {
           document.getElementById("runcode").href =
-            "http://localhost:3000/run/" + obj.filename;
+            `${SERVER_API}run/` + obj.filename;
 
           document.getElementById("code").classList.add("language-html");
 
@@ -153,7 +154,8 @@
 
   async function async_fectch() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", `http://localhost:3000/class-data/<%=id%>/${URL_FRAME}`);
+    xhr.open("GET", `${SERVER_API}class-data/<%=id%>/${URL_FRAME}`);
+    xhr.setRequestHeader("Access-Control-Allow-Origin", SERVER_API);
     xhr.onload = function () {
       if (this.status == 200) {
         var obj = JSON.parse(this.response);
@@ -161,7 +163,7 @@
         document.getElementById("code").innerText = data;
         if (obj.filename.includes(".html")) {
           document.getElementById("runcode").href =
-            "http://localhost:3000/run/" + obj.filename;
+            `${SERVER_API}run/` + obj.filename;
 
           document.getElementById("code").classList.add("language-html");
 
