@@ -11,9 +11,14 @@ body {
 }
 
 code {
-    background-color: rgb(250, 235, 216) !important;
+    /* background-color: rgb(250, 235, 216) !important; */
     border: 1px burlywood solid;
     border-radius: 9px;
+}
+
+.text-bold {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
 
 #navigation {

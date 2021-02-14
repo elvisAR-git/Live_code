@@ -61,7 +61,7 @@
                 <i class="fa fa-play-circle"></i>
               </a>
               <a
-                href="https://github.com/elvisAR-git/ARengine"
+                href="https://github.com/DSC-Mount-Kenya-University/Live_code"
                 class="btn btn-lg btn-outline-danger"
                 id="runcode"
               >
@@ -84,7 +84,7 @@
           <!-- code goes here -->
           <br />
           <div class="codebar">
-            <pre><code class="p-3 shadow" id="code" style="height: auto;min-height: 500px !important; max-height: 650px; font-family:monospace;font-size: large;">Select file to open</code></pre>
+            <pre><code class="p-3 shadow" id="code" style="height: auto;min-height: 400px !important; max-height: 600px; font-family:monospace;font-size: large;">Select file to open</code></pre>
           </div>
         </div>
       </div>
@@ -119,10 +119,10 @@
         var obj = JSON.parse(this.response);
         var data = obj.data;
         document.getElementById("code").innerText = data;
-        if (obj.filename.includes(".html")) {
-          document.getElementById("runcode").href =
-            `${SERVER_API}run/` + obj.filename;
 
+        document.getElementById("runcode").href =
+          `${SERVER_API}run/` + obj.filename;
+        if (obj.filename.includes(".html")) {
           document.getElementById("code").classList.add("language-html");
 
           document.getElementById("code").classList.remove("language-css");

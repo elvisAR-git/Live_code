@@ -3,6 +3,8 @@ const DB = require("./DatabaseService");
 var router = express.Router();
 const fs = require("fs");
 const MediaRender = require("./mediaRender");
+const { Socket } = require("net");
+const { resolve } = require("path");
 
 let MyDB;
 
@@ -12,16 +14,21 @@ DB.connect("dsc_database").then((database) => {
 
 router.get("", (req, res) => {
   var classes = [];
-  DB.fetch(MyDB, "classes", 0).then((results, error) => {
-    results.forEach((element) => {
-      classes.push(element);
-    });
+  DB.fetch(MyDB, "classes", 0)
+    .then((results, error) => {
+      results.forEach((element) => {
+        classes.push(element);
+      });
 
-    var data = {
-      classes: results,
-    };
-    res.render("index", data);
-  });
+      var data = {
+        classes: results,
+      };
+      res.render("index", data);
+    })
+    .catch((err) => {
+      console.log("[!] DATABASE CONNECT ERRROR:", err.code);
+      res.render("500");
+    });
 });
 
 router.get("/class/:id", (req, res) => {
@@ -102,12 +109,26 @@ router.get("/class-data/:id/:filename", (req, res) => {
 
 router.get("/run/:file_name/", (req, res) => {
   var file = req.params.file_name;
-
   MediaRender.get(file).then((obj) => {
     if (obj.code == 200) {
-      res.status(obj.code);
-      res.write(obj.data);
-      res.end();
+      if (
+        file.includes(".html") ||
+        file.includes(".css") ||
+        file.includes(".js")
+      ) {
+        res.status(obj.code);
+        res.write(obj.data);
+        res.end();
+      } else {
+        console.log("[*] executing with Tunnel server --->", file);
+        var socker = new Socket();
+        socker.connect({ port: 5000, host: "localhost" });
+        socker.write(obj.path);
+        socker.on("data", (data) => {
+          var solution = data.toString("utf-8");
+          res.render("Code", { solution: solution, file: file });
+        });
+      }
     } else {
       res.send(`<h1>Error [${obj.code}], please don't do that :-)</h1>`);
       res.end();
