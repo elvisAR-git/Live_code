@@ -1,34 +1,36 @@
 const express = require("express");
-const DB = require("./DatabaseService");
 var router = express.Router();
 const fs = require("fs");
 const MediaRender = require("./mediaRender");
 const { Socket } = require("net");
-const { resolve } = require("path");
-
-let MyDB;
-
-DB.connect("dsc_database").then((database) => {
-  MyDB = database;
-});
 
 router.get("", (req, res) => {
-  var classes = [];
-  DB.fetch(MyDB, "classes", 0)
-    .then((results, error) => {
-      results.forEach((element) => {
-        classes.push(element);
-      });
-
-      var data = {
-        classes: results,
-      };
-      res.render("index", data);
-    })
-    .catch((err) => {
-      console.log("[!] DATABASE CONNECT ERRROR:", err.code);
-      res.render("500");
+  var dirs = fs.readdirSync("../Classes/");
+  dirs.pop();
+  let classes = [];
+  var d = __dirname.replace("/app", "/");
+  dirs.forEach((dir) => {
+    var files = fs.readdirSync("../Classes/" + dir);
+    var logo = "default.png";
+    files.forEach((file) => {
+      if (file.includes("logo")) {
+        if (file.includes(".svg")) {
+          logo = fs.readFileSync(d + "Classes/" + dir + "/" + file).toString();
+        } else {
+          logo = file;
+        }
+      }
     });
+    classes.push({
+      name: dir.substr(0, dir.length - 2),
+      id: dir.substr(dirs.length - 7, dir.length - 3).replace("#", ""),
+      image: logo,
+    });
+  });
+  let data = {
+    classes: classes,
+  };
+  res.render("index", data);
 });
 
 router.get("/class/:id", (req, res) => {
@@ -131,6 +133,39 @@ router.get("/run/:file_name/", (req, res) => {
       }
     } else {
       res.send(`<h1>Error [${obj.code}], please don't do that :-)</h1>`);
+      res.end();
+    }
+  });
+});
+
+router.get("/:filename", (req, res) => {
+  file = MediaRender.get(req.params.filename);
+  file.then((data) => {
+    if (data.code == 200) {
+      // file found
+      res.status(data.code);
+      res.write(data.data);
+      res.end();
+    } else {
+      res.status(data.code);
+      res.write(req.params.filename + " could not be found on this server");
+      res.end();
+    }
+  });
+});
+
+//Download request
+router.get("/download/:filename", (req, res) => {
+  file = MediaRender.get(req.params.filename);
+  file.then((data) => {
+    if (data.code == 200) {
+      // file found
+      res.status(data.code);
+      res.send(data.data);
+      res.end();
+    } else {
+      res.status(data.code);
+      res.write(req.params.filename + " could not be found on this server");
       res.end();
     }
   });

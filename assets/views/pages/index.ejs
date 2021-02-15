@@ -13,6 +13,7 @@
     crossorigin="anonymous"
   />
   <link rel="stylesheet" href="/CSS/main.css" />
+  <link rel="stylesheet" href="/CSS/styles.css" />
   <body>
     <%- include("../partials/header") %>
     <div class="container">
@@ -20,12 +21,13 @@
       <div class="row">
         <% classes.forEach(function(class_) { %>
         <div class="card col-md-4 shadow p-2 text-center g-2">
-          <img
-            src="<%=class_.image  %> "
-            alt=""
-            class="card-img-top"
-            style="height: 150px"
-          />
+          <% if (class_.image.includes("<svg")) { %>
+          <div class="logo"><%-class_.image%></div>
+          <% } else { %>
+          <div class="logo">
+            <img src="<%=class_.image%>" alt="" />
+          </div>
+          <%}%>
           <div class="card-body">
             <h4 class="card-title"><%=class_.name%></h4>
             <small> <%=class_.description%> </small><br />

@@ -5,13 +5,14 @@ const readFile = util.promisify(fs.readFile);
 
 // add as many as you like
 var d = __dirname.replace("/app", "/");
-MEDIA_DIRS = [
-  d + "Classes/app_dev_tuesdays#2/",
-  d + "Classes/Web development Monday#1/",
-  d + "Classes/Data Science Wednesday#3/",
-  d + "Classes/IOT Thursdays#4/"
-];
 
+var dirs = fs.readdirSync("../Classes/");
+var MEDIA_DIRS = [];
+dirs.forEach((dir) => {
+  MEDIA_DIRS.push(d + `Classes/${dir}/`);
+});
+
+MEDIA_DIRS.push(d + "Classes/");
 /*
     The MediaRender class implements an async file reader that reads files
     stored on the server. it is very easy to use, just call the get method
@@ -25,7 +26,7 @@ class MediaRender {
     var response = {
       code: 404,
       data: undefined,
-      path:undefined,
+      path: undefined,
     };
     var n = MEDIA_DIRS.length;
     var counter = 0;
@@ -37,7 +38,7 @@ class MediaRender {
           // File found
           response.code = 200;
           response.data = dt;
-          response.path = MEDIA_DIRS[counter] + filename
+          response.path = MEDIA_DIRS[counter] + filename;
           console.log(`[+] 200 ---> ${MEDIA_DIRS[counter] + filename}`);
         })
         .catch((err) => {});

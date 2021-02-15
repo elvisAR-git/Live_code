@@ -10,6 +10,14 @@ body {
     height: 100% !important;
 }
 
+.logo svg {
+    height: 150px !important;
+    width: 380px;
+}
+.logo img {
+    height: 150px !important;
+    width: 380px;
+}
 code {
     /* background-color: rgb(250, 235, 216) !important; */
     border: 1px burlywood solid;
