@@ -22,8 +22,8 @@ router.get("", (req, res) => {
       }
     });
     classes.push({
-      name: dir.substr(0, dir.length - 2),
-      id: dir.substr(dirs.length - 7, dir.length - 3).replace("#", ""),
+      name: dir.substring(0, dir.length - 2),
+      id: dir.substring(dir.length - 1, dir.length).replace("#", ""),
       image: logo,
     });
   });
@@ -124,7 +124,7 @@ router.get("/run/:file_name/", (req, res) => {
       } else {
         console.log("[*] executing with Tunnel server --->", file);
         var socker = new Socket();
-        socker.connect({ port: 5000, host: "localhost" });
+        socker.connect({ port: 5001, host: "localhost" });
         socker.write(obj.path);
         socker.on("data", (data) => {
           var solution = data.toString("utf-8");
