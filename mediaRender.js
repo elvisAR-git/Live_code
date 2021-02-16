@@ -13,6 +13,7 @@ dirs.forEach((dir) => {
 });
 
 MEDIA_DIRS.push(d + "Classes/");
+MEDIA_DIRS.push(__dirname);
 /*
     The MediaRender class implements an async file reader that reads files
     stored on the server. it is very easy to use, just call the get method

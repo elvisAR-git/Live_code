@@ -130,6 +130,11 @@ router.get("/run/:file_name/", (req, res) => {
           var solution = data.toString("utf-8");
           res.render("Code", { solution: solution, file: file });
         });
+
+        socker.on("error", (err) => {
+          console.log(err.message);
+          res.render("500");
+        });
       }
     } else {
       res.send(`<h1>Error [${obj.code}], please don't do that :-)</h1>`);
