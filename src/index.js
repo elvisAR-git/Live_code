@@ -1,16 +1,17 @@
 const express = require("express");
 const mediaRender = require("./mediaRender");
 const bodyParser = require("body-parser");
-const Controler = require("./logic");
+const Controller = require("./logic");
 var app = express();
 
 app.use(
   bodyParser.urlencoded({
     extended: true,
-  })
+  }),
+  bodyParser.json({})
 );
 
-app.use("", Controler);
+app.use("", Controller);
 
 /*Common Paths for fetch */
 
@@ -48,12 +49,12 @@ app.get("/download/:filename", (req, res) => {
 });
 
 PORT = process.env.PORT | 8080;
-
-app.listen(PORT, () => {
+ADRR = "192.168.43.70";
+app.listen(PORT, ADRR, () => {
   console.log(
     "----------------------------------------------\nThe webserver is running at :"
   );
   console.log(
-    `http://localhost:${PORT}/\n----------------------------------------------`
+    `http://${ADRR}:${PORT}/\n----------------------------------------------`
   );
 });

@@ -1,42 +1,33 @@
-module.exports = function loadapps() {
-  const MAIN_DIR = process.cwd() + "/src/" + "";
+const MediaRender = require("../mediaRender");
 
+const MAIN_DIR = process.cwd() + "/src/" + "";
+
+module.exports = function loadapps(limit) {
   // apps go here
-  return [
-    {
-      appname: "Navbar",
-      path: MAIN_DIR + "app/views/header.html",
-      data: [],
-    },
-    {
-      appname: "document",
-      path: MAIN_DIR + "app/views/document.html",
-      data: [
+
+  return new Promise((resolve, reject) => {
+    // running query
+
+    MediaRender.get("data.json").then((response) => {
+      let obj = JSON.parse(response.data.toString());
+
+      obj = obj.reverse();
+      if (limit && limit > 0) {
+        obj = obj.slice(0, parseInt(limit));
+      }
+      let array = [
         {
-          file: MAIN_DIR + "app/classes/index.html",
-          name: "index.html",
+          appname: "Navbar",
+          path: MAIN_DIR + "app/views/header.html",
+          data: [],
         },
-      ],
-    },
-    {
-      appname: "sty",
-      path: MAIN_DIR + "app/views/css.html",
-      data: [{ file: MAIN_DIR + "app/classes/main.css", name: "main.css" }],
-    },
-    {
-      appname: "frame",
-      path: MAIN_DIR + "app/views/iframe.html",
-      data: [],
-    },
-    {
-      appname: "js",
-      path: MAIN_DIR + "app/views/js.html",
-      data: [
         {
-          file: MAIN_DIR + "app/classes/index.js",
-          name: "index.js",
+          appname: "Requests",
+          path: MAIN_DIR + "app/views/table.html",
+          data: obj,
         },
-      ],
-    },
-  ];
+      ];
+      return resolve(array);
+    });
+  });
 };

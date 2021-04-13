@@ -1,44 +1,45 @@
 <!DOCTYPE html>
+<!-- Compiled and minified CSS -->
 <link
   rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-  crossorigin="anonymous"
+  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 />
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+  body {
+    font-family: "Nunito" !important;
+  }
+  .card-content p {
+    font-weight: bolder;
+  }
+</style>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MKU DSC</title>
+    <title>End point!</title>
   </head>
 
   <body>
     <Navbar></Navbar>
-    <br />
-
-    <div class="shadow m-2 p-2">
-      <a href="/" class="btn btn-outline-danger">Back home</a>
-      <button class="btn btn-outline-primary m-2" id="run">Run code</button>
-      <script>
-        document.getElementById("run").onclick = (event) => {
-          window.open("http://localhost:8080/index.html", false);
-        };
-      </script>
-      <div class="row">
-        <div class="col-md-6">
-          <document></document>
-        </div>
-        <div class="col-md-6">
-          <sty></sty>
-        </div>
-
-        <div class="col-md-6">
-          <js></js>
-        </div>
-        <div class="col-md-6">
-          <frame></frame>
-        </div>
-      </div>
+    <div style="padding: 1%">
+      <br />
+      <table class="media striped centered z-depth-1">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Source</th>
+            <th>Method</th>
+            <th>Route</th>
+            <th>body</th>
+            <th>headers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Requests></Requests>
+        </tbody>
+      </table>
     </div>
   </body>
 </html>

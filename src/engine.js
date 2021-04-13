@@ -16,7 +16,6 @@ class Engine {
         data array
     */
   static loadTemplate(html, data) {
-    console.log(data);
     var template = html;
     if (data.file) {
       data.file = readCode(data.file);

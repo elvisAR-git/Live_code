@@ -9,7 +9,7 @@ MEDIA_DIRS = [
   __dirname + "/app/Scripts/",
   __dirname + "/app/global/",
   __dirname + "/app/CSS/",
-  __dirname + "/app/classes/",
+  __dirname + "/Database/",
 ];
 
 /*
